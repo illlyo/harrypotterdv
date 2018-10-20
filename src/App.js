@@ -147,6 +147,7 @@ class App extends Component {
         weight: 3
       }
     ]
+
     const hermoine = [
   {
     source: "Hermoine Granger",
@@ -179,15 +180,96 @@ class App extends Component {
     weight: 1
   }
 ]
+
+const ron = [
+  {
+    "source": "Ron Weasley",
+    "target": "Mother Weasley",
+    "weight": 1
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Fred Weasley",
+    "weight": 2
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "George Weasley",
+    "weight": 3
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Harry Potter",
+    "weight": 49
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Hermoine Granger",
+    "weight": 20
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Draco Malfoy",
+    "weight": 4
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Sir Nicholas de Mimsy-Porpington (ghost)",
+    "weight": 1
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Neville",
+    "weight": 4
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Rubeus Hagrid",
+    "weight": 6
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Professor McGonagall",
+    "weight": 1
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Peeves - a poltergeist",
+    "weight": 1
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "troll",
+    "weight": 1
+  },
+  {
+    "source": "Ron Weasley",
+    "target": "Dean Thomas",
+    "weight": 1
+  }
+]
     console.log(harrypotter.map(a => a.source))
-    const graphPoints = harrypotter.map(function(a) {
+    const hpGraphPoints = harrypotter.map(function(a) {
         return([
               <ForceGraphNode node={{ id: a.source, label: a.source }} fill="red" />,
               <ForceGraphNode node={{ id: a.target, label: a.target }} fill="blue" />,
               <ForceGraphLink link={{ source: a.source, target: a.target }} />  
               ])      
             })
-          
+    const hgGraphPoints = hermoine.map(function(a) {
+        return([
+              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="red" />,
+              <ForceGraphNode node={{ id: a.target, label: a.target }} fill="blue" />,
+              <ForceGraphLink link={{ source: a.source, target: a.target }} />  
+              ])      
+            })
+    const ronPoints = ron.map(function(a) {
+        return([
+              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="red" />,
+              <ForceGraphNode node={{ id: a.target, label: a.target }} fill="blue" />,
+              <ForceGraphLink link={{ source: a.source, target: a.target }} />  
+              ])      
+            })
     return (
       <div className="App">
         <header className="App-header">
@@ -197,7 +279,23 @@ class App extends Component {
           onSelectNode={(node) => console.log(node)}
           highlightDependencies
         >
-          {graphPoints}
+          {hpGraphPoints}
+        </InteractiveForceGraph>
+        <InteractiveForceGraph
+          simulationOptions={{ height: 300, width: 300 }}
+          labelAttr="label"
+          onSelectNode={(node) => console.log(node)}
+          highlightDependencies
+        >
+          {hgGraphPoints}
+        </InteractiveForceGraph>
+        <InteractiveForceGraph
+          simulationOptions={{ height: 300, width: 300 }}
+          labelAttr="label"
+          onSelectNode={(node) => console.log(node)}
+          highlightDependencies
+        >
+          {ronPoints}
         </InteractiveForceGraph>
         </header>
       </div>
