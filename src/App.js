@@ -258,14 +258,14 @@ const ron = [
             })
     const hgGraphPoints = hermoine.map(function(a) {
         return([
-              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="red" />,
+              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="purple" />,
               <ForceGraphNode node={{ id: a.target, label: a.target }} fill="blue" />,
               <ForceGraphLink link={{ source: a.source, target: a.target }} />  
               ])      
             })
     const ronPoints = ron.map(function(a) {
         return([
-              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="red" />,
+              <ForceGraphNode node={{ id: a.source, label: a.source }} fill="green" />,
               <ForceGraphNode node={{ id: a.target, label: a.target }} fill="blue" />,
               <ForceGraphLink link={{ source: a.source, target: a.target }} />  
               ])      
@@ -273,6 +273,7 @@ const ron = [
     return (
       <div className="App">
         <header className="App-header">
+        <h1>Harry Potter Data Visualization</h1>
         <InteractiveForceGraph
           simulationOptions={{ height: 300, width: 300 }}
           labelAttr="label"
@@ -280,21 +281,7 @@ const ron = [
           highlightDependencies
         >
           {hpGraphPoints}
-        </InteractiveForceGraph>
-        <InteractiveForceGraph
-          simulationOptions={{ height: 300, width: 300 }}
-          labelAttr="label"
-          onSelectNode={(node) => console.log(node)}
-          highlightDependencies
-        >
           {hgGraphPoints}
-        </InteractiveForceGraph>
-        <InteractiveForceGraph
-          simulationOptions={{ height: 300, width: 300 }}
-          labelAttr="label"
-          onSelectNode={(node) => console.log(node)}
-          highlightDependencies
-        >
           {ronPoints}
         </InteractiveForceGraph>
         </header>
